@@ -1,0 +1,67 @@
+﻿@model ProjeModel.Entities.SayfaKategorileri
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SayfaKategorileri</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AktifMi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AktifMi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SilindiMi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SilindiMi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KayitTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KayitTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SilinmeTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SilinmeTarihi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

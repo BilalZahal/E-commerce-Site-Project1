@@ -1,0 +1,43 @@
+﻿@using ProjeModel.Entities
+@using ProjeModel.Extensions
+@using PagedList.Mvc
+@model PagedList.PagedList<Kategoriler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.Raw(TempData["Mesaj"])
+</p>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Kategoriler</h2>
+    </div>
+    <div class="col-md-6 text-right">
+        <a href="@Url.Action("Ekle")" class="btn btn-primary" style="margin-top:15px;">Kategori Ekle</a>
+    </div>
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Kategori Adı</th>
+        <th>Durum</th>
+        <th>İşlemler</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Adi</td>
+            <td>@Html.Raw(item.AktifMi.ToAktifMi())</td>
+            <td>
+                <a href="@Url.Action("Duzenle","Kategori", new { id = item.id })" class="btn btn-warning">Düzenle</a>
+                <a href="@Url.Action("Sil","Kategori", new { id = item.id })" class="btn btn-danger" onclick="return confirm('Silmek istediğinizden emin misiniz?')">Sil</a>
+            </td>
+        </tr>
+    }
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+

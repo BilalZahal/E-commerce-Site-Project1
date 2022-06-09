@@ -1,0 +1,87 @@
+﻿@using ProjeModel.Extensions
+@model IEnumerable<ProjeModel.Entities.Urunler>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6"><h2>Ürünler Listesi</h2></div>
+    <div class="col-md-6" style="margin-top:15px;">
+        <p class="text-right">
+            @Html.ActionLink("Yeni Ekle", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+    </div>
+</div>
+<p>@Html.Raw(TempData["Mesaj"])</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategoriler.Adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.indirim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AktifMi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RenkBilgisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumaraBilgisi)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kategoriler.Adi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fiyat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.indirim)
+            </td>
+            <td>
+                @Html.Raw(item.AktifMi.ToAktifMi())
+            </td>
+            <td>
+                @foreach (var renkId in item.RenkBilgisi.Split(','))
+                {
+                    int renk = int.Parse(renkId);
+                    var urunRenk = new ProjeModel.Entities.Entities().UrunRenkleri.Find(renk);
+                    <span class="label label-default">@urunRenk.Renk</span>
+                }
+            </td>
+            <td>
+                @foreach (var numaraId in item.NumaraBilgisi.Split(','))
+                {
+                    int numara = int.Parse(numaraId);
+                    var urunNumara = new ProjeModel.Entities.Entities().UrunNumaralari.Find(numara);
+                    <span class="label label-default">@urunNumara.Numara</span>
+                }
+
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.id }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Resimler", "Index", "UrunResimleri", new { urunid = item.id }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Sil", "Delete", new { id = item.id }, new { @class = "btn btn-danger", @onclick = "return confirm('Silmek istediğinizden emin misiniz?')" })
+            </td>
+        </tr>
+    }
+
+</table>

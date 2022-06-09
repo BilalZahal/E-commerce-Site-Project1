@@ -1,0 +1,44 @@
+﻿@using ProjeModel.Extensions
+@model IEnumerable<ProjeModel.Entities.UrunRenkleri>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-6"><h2>Ürün Renkleri</h2></div>
+    <div class="col-md-6" style="margin-top:15px;">
+        <p class="text-right">
+            @Html.ActionLink("Yeni Ekle", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+    </div>
+</div>
+<p>@Html.Raw(TempData["Mesaj"])</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Renk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AktifMi)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Renk)
+            </td>
+            <td>
+                @Html.Raw(item.AktifMi.ToAktifMi())
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.id }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Sil", "Delete", new { id = item.id }, new { @class = "btn btn-danger", @onclick = "return confirm('Silmek istediğinizden emin misiniz?')" })
+            </td>
+        </tr>
+    }
+
+</table>

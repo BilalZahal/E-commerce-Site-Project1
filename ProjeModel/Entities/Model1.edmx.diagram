@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f4c4cc106c3e423bb4a01e5ea4cc5e13" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="EticaretDBModel.Bannerlar" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EticaretDBModel.Kategoriler" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EticaretDBModel.Kullanicilar" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EticaretDBModel.SayfaKategorileri" Width="1.5" PointX="2.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EticaretDBModel.Sayfalar" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EticaretDBModel.Sepet" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EticaretDBModel.SepetDetay" Width="1.5" PointX="10.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EticaretDBModel.Urunler" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EticaretDBModel.UrunNumaralari" Width="1.5" PointX="4.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EticaretDBModel.UrunRenkleri" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EticaretDBModel.UrunResimleri" Width="1.5" PointX="10.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EticaretDBModel.Uyeler" Width="1.5" PointX="6" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="EticaretDBModel.FK_Kategoriler_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="EticaretDBModel.FK_Sayfalar_Kategoriler" ManuallyRouted="false" />
+        <AssociationConnector Association="EticaretDBModel.FK_Urunler_Kategoriler" ManuallyRouted="false" />
+        <AssociationConnector Association="EticaretDBModel.FK_Urunler_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="EticaretDBModel.FK_Sepet_Uyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="EticaretDBModel.FK_SepetDetay_Sepet" ManuallyRouted="false" />
+        <AssociationConnector Association="EticaretDBModel.FK_SepetDetay_Urunler" ManuallyRouted="false" />
+        <AssociationConnector Association="EticaretDBModel.FK_UrunResimleri_Urunler" ManuallyRouted="false" />
+        <AssociationConnector Association="EticaretDBModel.FK_Sayfalar_SayfaKategorileri" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

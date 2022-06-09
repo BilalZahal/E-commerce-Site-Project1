@@ -1,0 +1,292 @@
+﻿
+.logo img {
+    height: 60px;
+    margin-top: 20px;
+}
+
+
+.btn-outline-siteColor {
+    color: #cba270;
+    border-color: #cba270;
+}
+
+    .btn-outline-siteColor:hover {
+        color: #fff;
+        border-color: #cba270;
+        background-color: #cba270;
+    }
+
+.ustalan {
+    margin-top: 30px;
+}
+
+.btn-siteColor {
+    color: #fff;
+    border-color: #a88457;
+    background-color: #cba270;
+}
+
+    .btn-siteColor:hover {
+        color: #fff;
+        background-color: #a88457;
+    }
+
+.btn {
+    font-size: 14px !important;
+}
+
+.navbar.center .navbar-inner {
+    text-align: center;
+}
+
+    .navbar.center .navbar-inner .nav {
+        float: none;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+.menu {
+    margin-top: 10px;
+    border-top: 1px solid #cba270;
+    border-bottom: 1px solid #cba270;
+    margin-bottom: 20px;
+}
+
+    .menu a {
+        font-size: 14px;
+        font-weight: 500;
+        padding: 5px 20px !important;
+    }
+
+        .menu a:hover {
+            color: #cba270 !important;
+        }
+
+.siteYaziColor {
+    color: #cba270 !important;
+}
+
+.urunAlani {
+    border: 1px solid #cba270;
+}
+
+    .urunAlani .baslik {
+        border-bottom: 1px solid #cba270;
+    }
+
+        .urunAlani .baslik h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: #cba270;
+        }
+
+        .urunAlani .baslik a {
+            font-size: 13px;
+            float: right;
+            margin: 5px;
+        }
+
+.urunler {
+    margin: 20px;
+}
+
+    .urunler .item .fiyat {
+        font-size: 18px;
+        font-weight: bold;
+        color: #cba270;
+    }
+
+    .urunler .item .urunAdi {
+        font-size: 13px;
+        color: #808080;
+    }
+
+    .urunler .item .btn {
+        font-size: 12px !important;
+        padding: 5px 5px !important;
+    }
+
+.owl-next {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    font-size: 36px !important;
+    margin-top: -36px !important;
+}
+
+.owl-prev {
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    font-size: 36px !important;
+    margin-top: -36px !important;
+}
+
+    .owl-next:hover, .owl-prev:hover {
+        background: none !important;
+    }
+
+.nav-link {
+    color: #333;
+}
+
+    .nav-link:hover {
+        color: #cba270;
+    }
+
+    .nav-link.active {
+        background-color: #cba270 !important;
+        color: #fff !important;
+    }
+
+footer {
+    margin-top: 30px;
+}
+
+    footer .ikonlar {
+        background-color: #cba270;
+        color: #fff;
+        text-align: center;
+        font-size: 16px;
+        padding: 15px;
+    }
+
+        footer .ikonlar .col-md-3 {
+            padding: 5px;
+            border-left: 1px solid #fff;
+        }
+
+            footer .ikonlar .col-md-3:first-child {
+                border-left: none;
+            }
+
+    footer .altMenu {
+        padding: 40px 0px;
+    }
+
+        footer .altMenu .footerLogo div {
+            display: inline-block;
+        }
+
+        footer .altMenu .footerLogo a {
+            display: block;
+        }
+
+        footer .altMenu .footerLogo i {
+            font-size: 20px !important;
+            color: #999 !important;
+        }
+
+    footer .footerMenu h4 {
+        font-size: 16px;
+        color: #222;
+        margin-bottom: 15px;
+    }
+
+    footer .footerMenu ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    footer .footerMenu a {
+        font-size: 13px;
+        color: #808080;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+        footer .footerMenu a:hover {
+            color: #cba270;
+        }
+
+.copyright {
+    margin-top: 30px;
+    padding: 20px 0;
+    font-size: 13px;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+
+    .copyright img {
+        margin: 5px;
+    }
+
+.img-fluid {
+    min-width: 100% !important;
+}
+
+
+.alisverisSepeti {
+    border: 1px solid #cba270;
+    background-color: #fff;
+    padding: 20px;
+    width: 350px;
+    position: absolute;
+    right: 15px;
+    z-index: 9999;
+    display: none;
+    font-size:12px;
+}
+
+.kategoriYolu .breadcrumb {
+    color: #333;
+}
+
+    .kategoriYolu .breadcrumb a {
+        color: #333;
+    }
+
+        .kategoriYolu .breadcrumb a:hover {
+            color: #cba270;
+            text-decoration: none;
+        }
+
+
+.solMenu {
+    list-style-type: none;
+    padding: 0;
+}
+
+    .solMenu li {
+        border-top: 1px solid #ccc;
+    }
+
+        .solMenu li:first-child {
+            border-top: none;
+        }
+
+        .solMenu li a {
+            display: block;
+            padding: 8px 15px;
+            color: #333;
+            text-decoration: none;
+        }
+
+            .solMenu li a:hover {
+                color: #cba270;
+            }
+
+.urunDetayFiyat {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.urunDetayEskiFiyat {
+    font-size: 24px;
+    color: #808080;
+    text-decoration: line-through;
+}
+
+.numaralar .kutu {
+    padding: 5px 10px;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+    .numaralar .kutu:hover {
+        background-color: #000;
+        color: #fff;
+    }

@@ -1,0 +1,56 @@
+﻿@using ProjeModel.Entities
+@using ProjeModel.Extensions
+@model List<SepetDetay>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal siparisToplam = 0;
+}
+
+@Html.Raw(TempData["Mesaj"])
+
+<h2>Sepet</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th width="20">Resim</th>
+        <th>Ürün Adı</th>
+        <th>Fiyatı</th>
+        <th>Adet</th>
+        <th>Renk</th>
+        <th>Numara</th>
+        <th>Tutar</th>
+        <th></th>
+    </tr>
+    @foreach (var detay in Model)
+    {
+        var tutar = detay.SiparisHesapla();
+        siparisToplam += tutar;
+        <tr>
+            <td><img class="img-thumbnail" src="/images/1.jpg" style="height:80px" /></td>
+            <td>@detay.Urunler.Adi</td>
+            <td>@detay.Fiyat.IndirimliFiyat(detay.indirim)</td>
+            <td>@detay.Adet Adet</td>
+            <td>@detay.Renk.RenkGoster()</td>
+            <td>@detay.Numara.NumaraGoster()</td>
+            <td>@tutar.ToString("C")</td>
+            <td>
+                <a class="btn btn-sm btn-danger" href="@Url.Action("Sil", new { id = detay.id })" onclick="return confirm('Sepetten ürünü silmek ister misiniz?')">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+            </td>
+        </tr>
+
+    }
+    <tr>
+        <td colspan="5"></td>
+        <th>Toplam</th>
+        <td colspan="2">@siparisToplam.ToString("C")</td>
+    </tr>
+</table>
+
+<div class="row">
+    <div class="col-md-12 text-right">
+        <a class="btn btn-danger" href="@Url.Action("Tamamla","Sepet")">ALIŞVERİŞİ TAMAMLA</a>
+    </div>
+</div>

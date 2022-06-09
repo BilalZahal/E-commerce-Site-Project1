@@ -1,0 +1,37 @@
+﻿@using ProjeModel.Entities
+@model Kategoriler
+@{
+    ViewBag.Title = "Kategori Düzenle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p>
+    @Html.Raw(TempData["Mesaj"])
+</p>
+
+<h2>Kategori Düzenle</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x => x.id)
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Kategori Adı</label>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(x => x.Adi, new { @class = "form-control", @placeholder = "Kategori Adı", @required = "required" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Aktif Mi</label>
+            <div class="col-sm-10">
+                @Html.CheckBox("AktifMi", Model.AktifMi)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">KAYDET</button>
+            </div>
+        </div>
+    </div>
+}

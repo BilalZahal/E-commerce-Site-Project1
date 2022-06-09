@@ -1,0 +1,65 @@
+﻿@using ProjeModel.Entities
+@using ProjeModel.Extensions
+@model List<Sepet>
+@{
+    ViewBag.Title = "Siparislerim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Siparişlerim</h2>
+
+<div class="accordion" id="accordionExample">
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        decimal siparisToplam = 0;
+        <div class="card">
+            <div class="card-header" id="heading_@Model[i].id">
+                <h2 class="mb-0">
+                    <button class="btn btn-link text-secondary" type="button" data-toggle="collapse" data-target="#collapse_@Model[i].id" aria-expanded="true" aria-controls="collapse_@Model[i].id" style="width:100%">
+                        <div class="row">
+                            <div class="col-md-4 text-left"><b>Sipariş Numarası:</b> @Model[i].SiparisNumarasi</div>
+                            <div class="col-md-4 text-center"><b>Sipariş Durumu: </b> @Model[i].SiparisDurumu.ToSiparisDurumu()</div>
+                            <div class="col-md-4 text-right"><b>Sipariş Tarihi: </b> @Model[i].KayitTarihi.Value.ToShortDateString()</div>
+                        </div>
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapse_@Model[i].id" class="collapse @(i == 0 ? "show" : "")" aria-labelledby="heading_@Model[i].id" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th width="20">Resim</th>
+                            <th>Ürün Adı</th>
+                            <th>Fiyatı</th>
+                            <th>Adet</th>
+                            <th>Renk</th>
+                            <th>Numara</th>
+                            <th>Tutar</th>
+                        </tr>
+                        @foreach (var detay in Model[i].SepetDetay)
+                        {
+                            var tutar = detay.SiparisHesapla();
+                            siparisToplam += tutar;
+                            <tr>
+                                <td><img class="img-thumbnail" src="/images/1.jpg" style="height:80px" /></td>
+                                <td>@detay.Urunler.Adi</td>
+                                <td>@detay.Fiyat.IndirimliFiyat(detay.indirim)</td>
+                                <td>@detay.Adet Adet</td>
+                                <td>@detay.Renk.RenkGoster()</td>
+                                <td>@detay.Numara.NumaraGoster()</td>
+                                <td>@tutar.ToString("C")</td>
+                            </tr>
+
+                        }
+                        <tr>
+                            <td colspan="5"></td>
+                            <th>Toplam</th>
+                            <td>@siparisToplam.ToString("C")</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,123 @@
+﻿@model ProjeModel.Entities.Urunler
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Urunler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.indirim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.indirim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TedarikSureci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TedarikSureci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AktifMi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AktifMi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SilindiMi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SilindiMi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KayitTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KayitTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SilinmeTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SilinmeTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RenkBilgisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RenkBilgisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumaraBilgisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumaraBilgisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategoriler.Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategoriler.Adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kullanicilar.Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kullanicilar.Ad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

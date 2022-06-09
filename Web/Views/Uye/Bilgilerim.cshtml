@@ -1,0 +1,94 @@
+﻿@using ProjeModel.Entities
+@using ProjeModel.Enumlar
+@model Uyeler
+@{
+    ViewBag.Title = "Bilgilerim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bilgilerim</h2>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        @using (Html.BeginForm("Bilgilerim", "Uye", FormMethod.Post, new { onsubmit = "return Kontrol();" }))
+        {
+            @Html.HiddenFor(x => x.id)
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Ad</label>
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(x => x.Ad, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Soyad</label>
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(x => x.Soyad, new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Email</label>
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @required = "required", @type = "email" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Parola</label>
+                <div class="col-sm-8">
+                    @Html.TextBox("Parola", "", new { @class = "form-control", @type = "password" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Parola (Tekrar)</label>
+                <div class="col-sm-8">
+                    @Html.TextBox("ParolaTekrar", "", new { @class = "form-control", @type = "password" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Adres</label>
+                <div class="col-sm-8">
+                    @Html.TextAreaFor(x => x.Adres, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Cinsiyet</label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(x => x.Cinsiyet, EnumHelper.GetSelectList(typeof(Cinsiyet)), "Cinsiyet Seçiniz", new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Tc No</label>
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(x => x.TcNo, new { @class = "form-control", @required = "required", @type = "number" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Doğum Tarihi</label>
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(x => x.DogumTarihi, new { @class = "form-control", @type = "date" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="offset-md-4 col-md-8">
+                    <button type="submit" class="btn btn-siteColor">Bilgilerimi Güncelle</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    function Kontrol() {
+        var tcno = $("#TcNo").val();
+        if (tcno.length != 11) {
+            alert('Tc No 11 karakterli olmak zorundadır.');
+            return false;
+        }
+        else {
+            return true;
+        }
+
+    }
+</script>

@@ -1,0 +1,165 @@
+﻿@using ProjeModel.Entities
+@using ProjeModel.Extensions
+@model Kategoriler
+@{
+    /**/
+
+    ViewBag.Title = Model.Adi;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var renk = Request.QueryString["renk"];
+    var numara = Request.QueryString["numara"];
+    var min = Request.QueryString["min"];
+    var max = Request.QueryString["max"];
+}
+<div class="row kategoriYolu">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-light">
+                <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Anasayfa</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@Model.Adi</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+
+        <div class="card">
+            <div class="card-header">
+                KATEGORİLER
+            </div>
+            <div class="card-body">
+                <ul class="solMenu">
+                    @foreach (var item in (List<Kategoriler>)ViewBag.Kategoriler)
+                    {
+                        <li>
+                            <a href="@Url.Action("Index", new { id = item.id })">@item.Adi</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+        @using (Html.BeginForm("Index", "Kategori", FormMethod.Get))
+        {
+            <div class="card mt-3">
+                <div class="card-header">
+                    RENK
+                </div>
+                <div class="card-body">
+                    @foreach (var item in (List<UrunRenkleri>)ViewBag.Renkler)
+                    {
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="@item.id" @((renk != null && renk.Contains(item.id.ToString())) ? "checked" : "") name="renk">
+                            <label class="form-check-label">
+                                @item.Renk
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header">
+                    NUMARA
+                </div>
+                <div class="card-body">
+                    @foreach (var item in (List<UrunNumaralari>)ViewBag.Numaralar)
+                    {
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="@item.id" @((numara != null && numara.Contains(item.id.ToString())) ? "checked" : "") name="numara">
+                            <label class="form-check-label">
+                                @item.Numara
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header">
+                    FİYAT ARALIĞI
+                </div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <input type="text" placeholder="min." value="@min" name="min" class="form-control">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> - </span>
+                        </div>
+                        <input type="text" placeholder="max." name="max" value="@max" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-block btn-siteColor mt-3">
+                <i class="fa fa-search" aria-hidden="true"></i> FİLTRELE
+            </button>
+        }
+    </div>
+
+    <div class="col-md-9">
+        <div class="bg-light p-2 pl-3 pr-3 mb-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sıralama Seçiniz
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Fiyata Göre Artan</a>
+                            <a class="dropdown-item" href="#">Fiyata Göre Azalan</a>
+                            <a class="dropdown-item" href="#">Alfabetik Sıraya Göre (A-Z)</a>
+                            <a class="dropdown-item" href="#">Alfabetik Sıraya Göre (Z-A)</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 text-right">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="defaultCheck2">
+                            @(((List<Urunler>)ViewBag.Urunler).Count) adet ürün bulundu.
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="urunler" style="margin:0;">
+            <div class="item">
+                <div class="row">
+                    @if (((List<Urunler>)ViewBag.Urunler).Count > 0)
+                    {
+                        foreach (var urun in (List<Urunler>)ViewBag.Urunler)
+                        {
+                            <div class="col-md-4">
+                                <img class="img-fluid img-thumbnail mb-2" src="/images/1.jpg" />
+                                <span class="fiyat">@urun.Fiyat.IndirimliFiyat(urun.indirim)</span>
+                                <span class="urunAdi" style="margin-left:20px;"><s>@urun.Fiyat.Value.ToString("C")</s></span>
+                                <div class="urunAdi">@urun.Adi</div>
+                                <div class="row mt-3 mb-3">
+                                    <div class="col-sm-6 pr-1">
+                                        <button data-id="@urun.id" data-renk="@urun.RenkBilgisi.Split(',')[0]" data-numara="@urun.NumaraBilgisi.Split(',')[0]" data-adet="1" class="btn btn-block btn-siteColor sepeteEkle">
+                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Sepete Ekle
+                                        </button>
+                                    </div>
+                                    <div class="col-sm-6 pl-1">
+                                        <a href="@Url.Action("Detay", "Urun", new { id = urun.id })" class="btn btn-block btn-siteColor">
+                                            <i class="fa fa-search" aria-hidden="true"></i> İncele
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="col-md-12">
+                            @Html.Raw("Listelenecek ürün bulunamadı".ToAlert(ProjeModel.Enumlar.Alert.Danger))
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
